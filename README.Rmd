@@ -30,6 +30,12 @@ devtools::install_github("56north/postlightmercury")
 
 This is a basic example which shows you how to solve a common problem:
 
+```{r, echo=FALSE}
+# load my api key
+load("/home/mikkel/Dropbox/R filer/Packages/postlightmercury/dev/api_key.rda")
+```
+
+
 ```{r example, eval=FALSE}
 ## basic example code
 
@@ -38,7 +44,23 @@ This is a basic example which shows you how to solve a common problem:
 # Then run the code below replacing the X's wih your api key.
 library(postlightmercury)
 
-web_parser(page_urls = "https://trackchanges.postlight.com/building-awesome-cms-f034344d8ed",
-           api_key = XXXXXXXXXXXXXXXXXXXXXXX)
-
+df <- web_parser(
+  page_urls = "https://trackchanges.postlight.com/building-awesome-cms-f034344d8ed",
+  api_key = XXXXXXXXXXXXXXXXXXXXXXX)
 ```
+
+```{r, echo=FALSE}
+library(postlightmercury)
+
+df <- web_parser(
+  page_urls = "https://trackchanges.postlight.com/building-awesome-cms-f034344d8ed",
+  api_key = api_key)
+```
+
+Let's have a look at the data:
+
+```{r}
+str(df)
+```
+
+
