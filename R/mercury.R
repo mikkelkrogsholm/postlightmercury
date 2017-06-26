@@ -1,6 +1,8 @@
 #' web_parser
 #'
-#' With just one API request, Mercury takes any web article and returns only the relevant content — headline, author, body text, relevant images and more — free from any clutter. It’s reliable, easy-to-use and free.
+#' With just one API request, Mercury takes any web article and returns only the
+#' relevant content — headline, author, body text, relevant images and more —
+#' free from any clutter. It’s reliable, easy-to-use and free.
 #'
 #' @param page_urls One or more urls to be parsed
 #' @param api_key Key for the API

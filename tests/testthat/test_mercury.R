@@ -1,8 +1,8 @@
-library(postlightmercury)
+library(webpageparser)
+library(testthat)
 context("Testing web_parser")
 
-# load my api key
-load("/home/mikkel/Dropbox/R filer/Packages/postlightmercury/dev/api_key.rda")
+api_key <- readline("Paste in your API key here: ")
 
 parsed_data <- web_parser(
   page_urls = "https://www.r-bloggers.com/how-and-when-ridge-regression-with-glmnet/",

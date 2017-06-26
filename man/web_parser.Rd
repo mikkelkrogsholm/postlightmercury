@@ -18,7 +18,9 @@ web_parser(page_urls, api_key)
 a tibble
 }
 \description{
-With just one API request, Mercury takes any web article and returns only the relevant content — headline, author, body text, relevant images and more — free from any clutter. It’s reliable, easy-to-use and free.
+With just one API request, Mercury takes any web article and returns only the
+relevant content — headline, author, body text, relevant images and more —
+free from any clutter. It’s reliable, easy-to-use and free.
 }
 \examples{
 \dontrun{
