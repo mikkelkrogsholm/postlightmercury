@@ -1,6 +1,6 @@
 Package: webpageparser
 Type: Package
-Title: Parses web pages using postlight mercury
+Title: Parses Web Pages using Postlight Mercury
 Version: 1.0
 Author: Mikkel Freltoft Krogsholm
 Maintainer: Mikkel Freltoft Krogsholm <mikkel@56n.dk>
