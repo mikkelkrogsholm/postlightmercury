@@ -12,6 +12,10 @@ knitr::opts_chunk$set(
 )
 ```
 
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/postlightmercury)](https://cran.r-project.org/package=postlightmercury)
+[![Coverage Status](https://img.shields.io/codecov/c/github/mikkelkrogsholm/postlightmercury/master.svg)](https://codecov.io/github/mikkelkrogsholm/postlightmercury?branch=master)
+
+
 # postlightmercury
 
 The goal of postlightmercury is to wrap the postlight mercury web parser API for R.
@@ -30,12 +34,6 @@ devtools::install_github("56north/postlightmercury")
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r, echo=FALSE}
-# load my api key
-load("/home/mikkel/Dropbox/R filer/Packages/postlightmercury/dev/api_key.rda")
-```
-
-
 ```{r example, eval=FALSE}
 ## basic example code
 
@@ -47,20 +45,6 @@ library(postlightmercury)
 df <- web_parser(
   page_urls = "https://trackchanges.postlight.com/building-awesome-cms-f034344d8ed",
   api_key = XXXXXXXXXXXXXXXXXXXXXXX)
-```
-
-```{r, echo=FALSE}
-library(postlightmercury)
-
-df <- web_parser(
-  page_urls = "https://trackchanges.postlight.com/building-awesome-cms-f034344d8ed",
-  api_key = api_key)
-```
-
-Let's have a look at the data:
-
-```{r}
-str(df)
 ```
 
 

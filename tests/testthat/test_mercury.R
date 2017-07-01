@@ -1,4 +1,4 @@
-library(webpageparser)
+library(postlightmercury)
 library(testthat)
 context("Testing web_parser")
 

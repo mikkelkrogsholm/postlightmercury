@@ -1,4 +1,4 @@
 library(testthat)
-library(webpageparser)
+library(postlightmercury)
 
-test_check("webpageparser")
+test_check("postlightmercury")

@@ -1,3 +1,4 @@
+#### web_parser #### ----
 #' web_parser
 #'
 #' With just one API request, Mercury takes any web article and returns only the
@@ -27,38 +28,51 @@ web_parser <- function(page_urls, api_key){
   if(missing(page_urls)) stop("One or more urls must be provided")
   if(missing(api_key)) stop("API key must be provided. Get one here: https://mercury.postlight.com/web-parser/")
 
-  # This is the loop that run through the urls.
-  loop_data <- pbapply::pblapply(page_urls, function(page_url){
-
-    # Calls the api and fetches the data
-    api_data <- httr::GET(
+  # Create a list of calls to make to the server using the crul package.
+  # We will make asynchronous calls to speed up everything.
+  async <- lapply(page_urls, function(page_url){
+    crul::HttpRequest$new(
       url = "https://mercury.postlight.com/parser",
-      query = list(url = page_url),
-      httr::add_headers(`x-api-key` = api_key)
-    )
-
-    # Extracts the data from the api call
-    api_content <- httr::content(api_data)
-
-    # Replaces NULL with NA's so it kan beput into a tibble
-    replace_na <- unlist(lapply(api_content, is.null))
-    api_content[replace_na] <- NA_character_
-
-    # Converts the data to a tibble
-    df <- tibble::as_tibble(api_content)
-
-    # Returns the tibble
-    return(df)
-
+      headers = list(`x-api-key` = api_key)
+    )$get(query = list(url = page_url))
   })
 
-  # Rowbinds all the data into one big data frame
-  all_data <- do.call(rbind, loop_data)
+  # Now we supply those calls to our async client
+  res <- crul::AsyncVaried$new(.list = async)
+
+  # We execute the calls
+  output <- res$request()
+
+  # Next extract the content from the api calls
+  api_content <- lapply(output, function(x) x$parse("UTF-8"))
+  api_content <- lapply(api_content, jsonlite::fromJSON)
+  api_content <- null_to_na(api_content)
+
+  # Converts the data to a tibble
+  df <- purrr::map_df(api_content, tibble::as_tibble)
 
   # Returns the tibble
-  return(all_data)
+  return(df)
 }
 
+#### null_to_na #### ----
+# Is not exported. It is a helper.
 
+#' Turns NULL values in a list into NAs.
+#'
+#' @param mylist is a list, where the NULL values are to be turned into NAs.
+
+null_to_na <- function (mylist) {
+  lapply(mylist, function(x) {
+    if (is.list(x)) {
+      null_to_na(x)
+    }
+    else {
+      if (is.null(x))
+        NA_character_
+      else x
+    }
+  })
+}
 
 
