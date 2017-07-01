@@ -1,6 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/postlightmercury)](https://cran.r-project.org/package=postlightmercury) [![Coverage Status](https://img.shields.io/codecov/c/github/mikkelkrogsholm/postlightmercury/master.svg)](https://codecov.io/github/mikkelkrogsholm/postlightmercury?branch=master)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/postlightmercury)](https://cran.r-project.org/package=postlightmercury)
 
 postlightmercury
 ================
